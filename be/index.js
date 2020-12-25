@@ -3,6 +3,7 @@
 const http = require('http');
 const getPassInfo = require('./getPassInfo');
 const logger = require('./logger');
+const PORT = process.env.PORT || 1337;
 
 http.createServer((req, res) => {
 	if(req.url !== "/getData") {
@@ -22,7 +23,7 @@ http.createServer((req, res) => {
 				res.end();
 				return;
 			}
-			res.end(JSON.stringify(data));
+			res.end(JSON.stringify(data || {}));
 		})
 		.catch((error) => {
 			res.statusCode = 500;
@@ -30,6 +31,6 @@ http.createServer((req, res) => {
 			res.end();
 		});
 
-}).listen(8080, () => {
-	logger.info("Server started");
+}).listen(PORT, () => {
+	logger.info(`Server started on port ${PORT}`)
 });

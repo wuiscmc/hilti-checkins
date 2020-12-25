@@ -6,6 +6,7 @@ const moment = require("moment");
 const logger = require('./logger');
 
 const FEED_URL = "https://www.gymcontrol.se/user/8935/xml/xml_gym_pass.php";
+//const FEED_URL = "http://localhost:1337/example.xml";
 
 const fetchDailyPasses = async () => {
 	logger.debug('Fetching data from gymcontrol');
@@ -35,7 +36,8 @@ const getAllPasses = async () => {
 		const {table: {row}} = parse((await fetchDailyPasses()));
 		return row;
 	} catch (e) {
-		logger.error('There was an issue fetching the daily passes ', e);
+		logger.error('There was an issue fetching the daily passes ');
+		logger.error(e);
 	}
 }
 

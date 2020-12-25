@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: 
+      context: .
+      target: backend
+    ports:
+      - 8080:80
+  frontend:
+    build: 
+      context: .
+      target: frontend
+    ports:
+      - 8081:80
+
+
+

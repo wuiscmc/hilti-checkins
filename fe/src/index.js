@@ -1,9 +1,12 @@
 "use strict"; 
 
 const axios = require("axios");
+const {promisify} = require("util");
+const sleep = promisify(setTimeout);
+const BACKEND_URL = process.env.BACKEND_URL || "http://backend/getData";
 
 const getCurrentPass = async () => {
-	const {data} = await axios.get("http://localhost:8080/getData");
+	const {data} = await axios.get(BACKEND_URL);
 	return data;
 }
 
