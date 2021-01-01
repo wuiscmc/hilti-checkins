@@ -1,16 +1,17 @@
+version: "3.9"
 services:
   backend:
     build: 
       context: .
       target: backend
     ports:
-      - 8080:80
+      - "8080:80"
   frontend:
     build: 
       context: .
-      target: frontend
+      target: frontend-dev
     ports:
-      - 8081:80
-
-
-
+      - "1337:80"
+    volumes:
+      - ${PWD}/fe/dist:/app/dist
+      - ${PWD}/fe/src:/app/src

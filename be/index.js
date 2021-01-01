@@ -3,7 +3,7 @@
 const http = require('http');
 const getPassInfo = require('./getPassInfo');
 const logger = require('./logger');
-const PORT = process.env.PORT || 1337;
+const PORT = process.env.PORT || 80;
 
 http.createServer((req, res) => {
 	if(req.url !== "/getData") {
