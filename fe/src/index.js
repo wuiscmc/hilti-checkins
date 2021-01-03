@@ -1,29 +1,33 @@
-"use strict"; 
+"use strict";
 
 const axios = require("axios");
-const {promisify} = require("util");
-const sleep = promisify(setTimeout);
-const BACKEND_URL = process.env.BACKEND_URL || "http://backend/getData";
+
+// promisifies the setTimeout function
+const sleep = (time) => new Promise((resolve, reject) => {
+  return setTimeout(resolve, time);
+});
 
 const updateElement = (selector, data) => {
 	const element = document.querySelector(selector);
-	element.innerHTML = data; 
+	element.innerText = data;
 }
 
 const getCurrentPass = async () => {
-	const {data} = await axios.get(BACKEND_URL);
-  updateElement('.app-pass', `${data.passnamn} (${data.tid}-${data.sluttid})`);
-  updateElement('.app-pass-checkins', data.incheckade);
-}
+  try {
+    console.log("fetching stuff...");
+    const {data} = await axios.get("http://backend/getData");
 
-function* generator() {
-  while(true) {
-    yield true;
+    updateElement('.app-pass', `${data.passnamn} (${data.tid}-${data.sluttid})`);
+    updateElement('.app-pass-checkins', data.incheckade);
+  } catch(e) {
+    updateElement('.error', "there was a problem");
+    console.log("error", e);
   }
 }
 
 (async function() {
-  for await(let i of generator()) {
+  while(true) {
     await getCurrentPass();
+    await sleep(10000);
   }
 })();

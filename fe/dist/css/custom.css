@@ -1,0 +1,40 @@
+body {
+  background: #333;
+  color: #fff; }
+
+.container {
+  max-width: 800px; }
+
+.content {
+  margin-top: 6rem;
+  text-align: center; }
+
+.value-prop {
+  margin-top: 1rem; }
+
+.value-props {
+  margin-top: 4rem;
+  margin-bottom: 4rem; }
+
+.logged-in-box {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background: #fff;
+  
+  border-radius: 5px;
+}
+
+.logged-in-box__counter {
+  font-size: 32px;
+  color: #000;
+
+  display: block;
+  text-align: center;
+  margin: 2.5rem auto 0;
+}
+
+/* Larger than phone */
+@media (min-width: 550px) {
+  .content {
+    margin-top: 18rem; }
+}
