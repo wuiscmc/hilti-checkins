@@ -1,17 +1,19 @@
 version: "3.9"
 services:
   backend:
-    build: 
+    build:
       context: .
       target: backend
     ports:
       - "8080:80"
   frontend:
-    build: 
+    build:
       context: .
       target: frontend-dev
+      # target: frontend
     ports:
       - "1337:80"
     volumes:
+       # - ${PWD}/fe/dist:/usr/share/nginx/html
       - ${PWD}/fe/dist:/app/dist
       - ${PWD}/fe/src:/app/src

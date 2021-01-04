@@ -12,8 +12,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
   <!-- CSS-->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
@@ -25,18 +26,21 @@
 </style>
 </head>
 <body>
+  <div class="top-bar">
+    <div class="top-bar__logo"></div>
+  </div>
   <div class="container content">
-    <section class="row">
-      <h2 class="header app-pass">BJJ (12:30-13:30)</h2>
-    </section>
-    <section class="row">
-      <div class="logged-in-box">
-        <div class="logged-in-box__counter app-pass-checkins">
-          32
+    <section class="app-data">
+      <div class="row">
+        <h2 class="header app-pass">bjj 12:30-13:30</h2>
+      </div>
+      <div class="row">
+        <div class="logged-in-box">
+          <div class="logged-in-box__counter app-pass-checkins">16</div>
         </div>
-        <div class="error"></div>
       </div>
     </section>
+    <div class="error-message-box error"></div>
   </div>
   <script src="./bundle.js"></script>
 </body>
