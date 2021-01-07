@@ -1,13 +1,13 @@
 const path = require('path');
 
 module.exports = {
-	entry: '/app/src/index.js',
+	entry: './src/index.js',
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 	},
   devServer: {
-    contentBase: '/app/dist',
+    contentBase: './dist',
     hot: true,
     port: process.env.PORT || 8080,
     host: '0.0.0.0',
@@ -20,6 +20,11 @@ module.exports = {
         enforce: 'pre',
         use: ['source-map-loader'],
       },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+        type: 'javascript/auto'
+      }
     ]
   },
 };
