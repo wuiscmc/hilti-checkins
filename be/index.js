@@ -55,6 +55,8 @@ const findCurrentPass = (passes) => {
     return;
   }
 
+  const time = now();
+
   return passes.find((pass) => {
     const begin = passtimeToDateTime(pass.tid);
     const end = passtimeToDateTime(pass.sluttid);
