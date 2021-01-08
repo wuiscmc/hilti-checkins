@@ -1,7 +1,5 @@
 'use strict';
 
-const moment = require('moment');
-
 const LEVELS = {
   debug: 0,
   info: 1,
@@ -10,23 +8,19 @@ const LEVELS = {
 };
 
 const logLevel = () => {
-  const level = process.env.LOG_LEVEL || 'warn';
+  const level = process.env.LOG_LEVEL && !isNaN(LEVELS[process.env.LOG_LEVEL])
+  ? process.env.LOG_LEVEL
+  : 'info';
 
-  return isNaN(LEVELS[level])
-  ? LEVELS.warn
-  : LEVELS[level];
-}
+  return LEVELS[level];
+};
 
-const now = () => {
-	return moment().format('YY-MM-DD:HH:mm:ss:ms');
-}
-
-const output = (level, msg, time = now()) => {
-  if(level < logLevel()) {
+const output = (level, msg) => {
+  if(LEVELS[level] < logLevel()) {
     return;
   }
 
-	console.log(`[${time}][${level.toUpperCase()}] ${msg}`);
+	console.log(`[${level.toUpperCase()}] ${msg}`);
 }
 
 module.exports = {
